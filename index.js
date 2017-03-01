@@ -66,8 +66,18 @@ rimraf('build/staging', (ex) => {
                       .on('close', () => {
                         return Promise.all(futureMoves.map(futureMove => {
                           return new Promise((resolve, reject) => fs.rename(futureMove.from, futureMove.to, (ex) => ex ? reject(ex) : resolve()));
-                        }));
-                        crossSpawn('pkill', ['-f', 'node index.cgi']);
+                        })).then(() => {
+                          return new Promise((resolve, reject) => {
+                            crossSpawn('sh', ['-c', 'npm install && npm prune'])
+                              .on('close', resolve)
+                              .on('error', reject)
+                            ;
+                          }).then(code => {
+                            if (!code) {
+                              throw new Error(`Stuff died with ${code}`);
+                            }
+                          });
+                        });
                       })
                     ;
                   });
