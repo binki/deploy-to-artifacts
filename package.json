@@ -1,0 +1,26 @@
+{
+  "name": "deploy-to-artifacts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binki/deploy-to-artifacts.git"
+  },
+  "author": "Nathan Phillip Brink <ohnobinki@ohnopublishing.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/binki/deploy-to-artifacts/issues"
+  },
+  "homepage": "https://github.com/binki/deploy-to-artifacts#readme",
+  "dependencies": {
+    "cross-spawn": "^5.1.0",
+    "mkdirp": "^0.5.1",
+    "request": "^2.79.0",
+    "rimraf-noglob": "^2.5.3",
+    "xml2js": "^0.4.17"
+  }
+}
