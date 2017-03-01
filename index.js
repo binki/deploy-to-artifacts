@@ -37,7 +37,7 @@ rimraf('build/staging', (ex) => {
             continue;
           }
           // TODO: Support subdirectories in build/ directory
-          const entryRelativePath = entry.split('/').slice(3).join('/');
+          const entryRelativePath = entry.split('/').slice(5).join('/');
           const tempDest = path.join('build', 'staging', entryRelativePath);
           futureMoves.push({
             from: tempDest,
