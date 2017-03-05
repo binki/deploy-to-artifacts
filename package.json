@@ -21,6 +21,7 @@
     "mkdirp": "^0.5.1",
     "request": "^2.79.0",
     "rimraf-noglob": "^2.5.3",
+    "touch": "^1.0.0",
     "xml2js": "^0.4.17"
   }
 }

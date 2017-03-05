@@ -7,6 +7,7 @@ const mkdirp = require('mkdirp');
 const path = require('path');
 const request = require('request');
 const rimraf = require('rimraf-noglob');
+const touch = require('touch');
 const xml2js = require('xml2js');
 
 rimraf('build/staging', (ex) => {
@@ -73,9 +74,12 @@ rimraf('build/staging', (ex) => {
                               .on('error', reject)
                             ;
                           }).then(code => {
-                            if (!code) {
+                            if (code) {
                               throw new Error(`Stuff died with ${code}`);
                             }
+                            return new Promise((resolve, reject) => {
+                              touch(path.join('build', 'updated'), {}, ex => ex ? reject(ex) : resolve());
+                            });
                           });
                         });
                       })
